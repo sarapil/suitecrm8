@@ -61,6 +61,49 @@ SuiteCRM is an open-source project. If you require help with support then please
 
 SuiteCRM is published under the AGPLv3 license.
 
+## Local Development (no Docker)
 
+These instructions are for setting up a local development environment without using Docker.
+
+### Prerequisites
+
+*   PHP 8.1 or higher.
+*   The following PHP extensions must be enabled:
+    *   mbstring
+    *   xml
+    *   curl
+    *   zip
+    *   intl
+    *   gd
+    *   mysql
+*   Composer (for dependency management, though this repository contains a checked-in `vendor` directory).
+*   A MySQL database server.
+
+### Setup
+
+1.  **Clone the repository:**
+    ```bash
+    git clone <repository-url>
+    cd <repository-directory>
+    ```
+
+2.  **Configure your environment:**
+    Copy the example environment file and edit it to match your local setup (database credentials, etc.):
+    ```bash
+    cp .env.example .env
+    ```
+    Now, open the `.env` file and configure your `DATABASE_URL` and `SITE_URL`.
+
+3.  **Web Server:**
+    The web root for the application is the `/public` directory. For local development, you can use PHP's built-in web server.
+
+    **Note:** The built-in server is for development purposes only and is not suitable for production. For production, use a more robust web server like Apache or Nginx.
+
+4.  **Run the application:**
+    Start the PHP built-in web server from the project root:
+    ```bash
+    php -S localhost:8000 -t public
+    ```
+    You should now be able to access the application at `http://localhost:8000`. If this is a fresh installation, you will be guided through the SuiteCRM installer.
 
 # suitecrm8
