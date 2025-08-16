@@ -76,11 +76,15 @@ import {AngularSvgIconModule} from 'angular-svg-icon';
 
 export const initializeApp = (appInitService: AppInit) => (): Promise<any> => appInitService.init();
 
+import { ArkoCrmCallEventsModule } from '../../../../../extensions/ArkoCrmCallEvents/app/src/app/arkocrm-call-events.module';
+import { CallNotificationComponent } from '../../../../../extensions/ArkoCrmCallEvents/app/src/app/components/call-notification/call-notification.component';
+
 @NgModule({
     declarations: [
         AppComponent,
+        CallNotificationComponent,
     ],
-    bootstrap: [AppComponent], imports: [
+    bootstrap: [AppComponent, CallNotificationComponent], imports: [
         BrowserModule,
         AppRoutingModule,
         FooterUiModule,
@@ -104,7 +108,8 @@ export const initializeApp = (appInitService: AppInit) => (): Promise<any> => ap
         MessageModalModule,
         RecordListModalModule,
         ApolloModule,
-        SidebarComponent
+        SidebarComponent,
+        ArkoCrmCallEventsModule
     ],
     providers: [
         {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
