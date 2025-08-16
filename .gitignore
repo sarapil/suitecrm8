@@ -1,0 +1,21 @@
+# Composer
+/vendor/
+composer.phar
+
+# Symfony
+/.env
+/config/secrets/prod/prod.decrypt.private.php
+/public/bundles/
+/public/build/
+/var/
+/public/dist/
+
+# Logs
+/logs/
+
+# Node
+/node_modules/
+/yarn-error.log
+
+# Misc
+.DS_Store
