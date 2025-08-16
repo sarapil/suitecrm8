@@ -1,24 +1,28 @@
-# AGENTS.md — SuiteCRM 8 (code-only)
+# AGENTS.md — ArkoCRM (SuiteCRM 8, code-only)
 
-## Goal
-Operate on pure SuiteCRM 8 source code. NO Docker, NO infra files, NO CI changes unless explicitly requested.
+## Scope
+- Code-only modifications to SuiteCRM 8. **No Docker/CI/infra** in this phase.
+- Upgrade-safe: put custom code under `custom/` when applicable; do not edit `/vendor`.
 
-## Tech expectations (for Jules’ ephemeral VM only)
-- OS: Ubuntu 24.04 (or default VM)
-- PHP >= 8.1 (prefer 8.2) with: mbstring, xml, curl, zip, intl, gd, mysql
-- Composer available
-- MariaDB/MySQL reachable if needed for runtime checks (optional)
+## Repo Map (key)
+- `/`           : SuiteCRM 8 app
+- `custom/`     : upgrade-safe modules & overrides
+- `docs/`       : TELEPHONY.md, OPENMEETINGS.md, SOFTPHONE.md, SETTINGS.md
+- `scripts/`    : (optional) jules-setup.sh for agent env only
 
-## Repo rules
-- DO: Limit changes to application code/config/docs/tests only.
-- DO: Use composer (no-dev) for dependency install.
-- DO: Keep diffs minimal & aligned with SuiteCRM 8 conventions.
-- DON’T: Add Dockerfiles, docker-compose, k8s, or CI workflows.
-- DON’T: Commit secrets or .env (only .env.example if needed).
-- DON’T: Edit /vendor directly (use composer).
+## Tech
+- PHP 8.2 with mbstring, xml, curl,soap,ldap,imap, zip, intl, gd, mysql; Composer.
+- Web root under `/public`.
 
-## Test/Done
-- `composer install --no-dev -o` runs without errors.
-- App boots locally (web front controller under /public).
-- If tests exist, they pass; otherwise add minimal tests only when asked.
+## Secrets
+- Use env vars only (e.g., `ARKO_AMI_SECRET`, `ARKO_OM_PASS`). No secrets in repo.
+
+## Prompts Pattern
+- Context → Do → Constraints → Acceptance Criteria → Test Plan.
+- Keep diffs small; focus on one concern per PR.
+
+## Definition of Done
+- `composer install --no-dev -o` clean.
+- Tests (when present) pass.
+- Docs updated for any new feature.
 
