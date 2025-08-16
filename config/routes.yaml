@@ -21,3 +21,9 @@ entrypoint_controllers:
         path: ../core/backend/EntryPoint/Controller/
         namespace: App\EntryPoint\Controller
     type: attribute
+
+arko_crm_call_events_controllers:
+    resource:
+        path: ../extensions/ArkoCrmCallEvents/backend/Controller/
+        namespace: App\Extension\ArkoCrmCallEvents\Controller
+    type: attribute

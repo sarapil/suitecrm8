@@ -1,0 +1,10 @@
+<div *ngIf="showBanner" class="call-notification-banner">
+  <div class="caller-info">
+    <p>Incoming call from: {{ callerName }} ({{ callerNumber }})</p>
+  </div>
+  <div class="actions">
+    <button *ngIf="recordId" (click)="openCallerRecord()">Open Caller Record</button>
+    <button *ngIf="!recordId" (click)="createNewLead()">Create New Lead</button>
+    <button (click)="closeBanner()">Close</button>
+  </div>
+</div>

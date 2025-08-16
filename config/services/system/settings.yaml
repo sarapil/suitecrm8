@@ -1,5 +1,8 @@
 parameters:
   system.settings:
+    arkocrm.call_events.enabled:
+        value: true
+        type: bool
     setup_wizard_route:
       route: users/Wizard
       queryParams:
